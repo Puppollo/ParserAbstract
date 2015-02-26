@@ -18,6 +18,6 @@ class Hotel extends ParserAbstract
      */
     protected function element($element)
     {
-        file_put_contents($this->file, print_r($element, true) . "\n===========\n", FILE_APPEND);
+        file_put_contents($this->file, "{$element['Id']['value']}\n", FILE_APPEND);
     }
 }

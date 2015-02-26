@@ -1,98 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<hotelContentFeed version="1.0" timestamp="1424838667984" cci="1346361368143" fpi="1424582319096" lci="1424809660498" ni="1422463465667" doi="1422474125356" hdi="1424665886857" >
-  <Hotel>
-    <Id>470817</Id>
-    <ExpediaId>8814621</ExpediaId>
-    <Name>A Casa do Folgo</Name>
-    <Neighbourhoods>
-    </Neighbourhoods>
-    <City>A Bana</City>
-    <State></State>
-    <Regions>
-    </Regions>
-    <Country>Испания</Country>
-    <Description></Description>
-    <Price>2821.98</Price>
-    <Currency>RUB</Currency>
-    <Location>В сельской местности</Location>
-    <PropertyDetailsLink>http://ru.hotels.com/ho470817/a-casa-do-folgo-a-bana-ispania/?wapb1=hotelcontentfeed</PropertyDetailsLink>
-    <CityLandingLink>http://ru.hotels.com/de1807427/gostinitsy-a-bana-ispania/?wapb1=hotelcontentfeed</CityLandingLink>
-    <PropertyType>ESR</PropertyType>
-  </Hotel>
-  <Hotel>
-    <Id>476191</Id>
-    <ExpediaId>9146295</ExpediaId>
-    <Name>Pinnacle Hotels and Suites</Name>
-    <Neighbourhoods>
-    </Neighbourhoods>
-    <City>Abakaliki</City>
-    <State></State>
-    <Regions>
-    </Regions>
-    <Country>Нигерия</Country>
-    <Description></Description>
-    <Price>4552.16</Price>
-    <Currency>RUB</Currency>
-    <Location>Неподалеку – Стадион города Абакалики</Location>
-    <PropertyDetailsLink>http://ru.hotels.com/ho476191/pinnacle-hotels-and-suites-abakaliki-nigeria/?wapb1=hotelcontentfeed</PropertyDetailsLink>
-    <CityLandingLink>http://ru.hotels.com/de1807861/gostinitsy-abakaliki-nigeria/?wapb1=hotelcontentfeed</CityLandingLink>
-    <PropertyType>ESR</PropertyType>
-  </Hotel>
-  <Hotel>
-    <Id>459891</Id>
-    <ExpediaId>8297996</ExpediaId>
-    <Name>La Demba Art-Hotel &amp; Restaurant</Name>
-    <Neighbourhoods>
-    </Neighbourhoods>
-    <City>Abizanda</City>
-    <State></State>
-    <Regions>
-    </Regions>
-    <Country>Испания</Country>
-    <Description></Description>
-    <Price>5551.46</Price>
-    <Currency>RUB</Currency>
-    <Location>На озере</Location>
-    <PropertyDetailsLink>http://ru.hotels.com/ho459891/la-demba-art-hotel-restaurant-abizanda-ispania/?wapb1=hotelcontentfeed</PropertyDetailsLink>
-    <CityLandingLink>http://ru.hotels.com/de466482/gostinitsy-abizanda-ispania/?wapb1=hotelcontentfeed</CityLandingLink>
-    <PropertyType>ESR</PropertyType>
-  </Hotel>
-  <Hotel>
-    <Id>399588</Id>
-    <ExpediaId>4846822</ExpediaId>
-    <Name>Hotel Les Touristes</Name>
-    <Neighbourhoods>
-    </Neighbourhoods>
-    <City>Abondance</City>
-    <State></State>
-    <Regions>
-    </Regions>
-    <Country>Франция</Country>
-    <Description></Description>
-    <Price>4425.82</Price>
-    <Currency>RUB</Currency>
-    <Location>В городе Абонданс</Location>
-    <PropertyDetailsLink>http://ru.hotels.com/ho399588/hotel-les-touristes-abondance-francia/?wapb1=hotelcontentfeed</PropertyDetailsLink>
-    <CityLandingLink>http://ru.hotels.com/de489778/gostinitsy-abondance-francia/?wapb1=hotelcontentfeed</CityLandingLink>
-    <PropertyType>ESR</PropertyType>
-  </Hotel>
-  <Hotel>
-    <Id>121835</Id>
-    <ExpediaId>9395</ExpediaId>
-    <Name>Novotel Accra City Centre</Name>
-    <Neighbourhoods>
-    </Neighbourhoods>
-    <City>Accra</City>
-    <State></State>
-    <Regions>
-    </Regions>
-    <Country>Гана</Country>
-    <Description></Description>
-    <Price>12759.36</Price>
-    <Currency>RUB</Currency>
-    <Location>Неподалеку – Национальный театр Ганы</Location>
-    <PropertyDetailsLink>http://ru.hotels.com/ho121835/novotel-accra-city-centre-accra-gana/?wapb1=hotelcontentfeed</PropertyDetailsLink>
-    <CityLandingLink>http://ru.hotels.com/de1785940/gostinitsy-accra-gana/?wapb1=hotelcontentfeed</CityLandingLink>
-    <PropertyType>ESR</PropertyType>
-  </Hotel>
+<hotelContentFeed version="1.0" timestamp="1424838667984" cci="1346361368143" fpi="1424582319096" lci="1424809660498" ni="1422463465667" doi="1422474125356" hdi="1424665886857">
+    <Hotel>
+        <Id>0</Id>
+        <ExpediaId>8814621</ExpediaId>
+    </Hotel>
+    <Hotel>
+        <Id>1</Id>
+        <ExpediaId>9146295</ExpediaId>
+    </Hotel>
+    <Hotel>
+        <Id>2</Id>
+        <ExpediaId>9146295</ExpediaId>
+    </Hotel>
+    <Hotel>
+        <Id>3</Id>
+        <ExpediaId>9146295</ExpediaId>
+    </Hotel>
+    <Hotel>
+        <Id>4</Id>
+        <ExpediaId>9146295</ExpediaId>
+    </Hotel>
 </hotelContentFeed>

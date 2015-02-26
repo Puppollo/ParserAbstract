@@ -81,10 +81,10 @@ abstract class ParserAbstract
                 }
             } elseif ($reader->nodeType == XMLReader::END_ELEMENT) {
                 if ($reader->localName == $this->mainXMLBlock) {
+
                     $skip = true;
                     if ($currentBlock < $offset) {
                         $currentBlock++;
-                        $reader->next($this->mainXMLBlock);
                         continue;
                     }
 
