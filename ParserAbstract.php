@@ -10,9 +10,9 @@ abstract class ParserAbstract
     }
 
     /**
-     * Подсчитать кол-во сущностей в xml
-     * @param string $file - путь к файлу
-     * @param string $element - имя сущности для подсчета
+     * Count entities
+     * @param string $file
+     * @param string $element
      * @return boolean|int
      */
     public static function count($file, $element)
