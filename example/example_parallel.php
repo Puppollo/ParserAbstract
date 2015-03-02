@@ -3,27 +3,24 @@
 include __DIR__ . '/../ParserAbstract.php';
 include __DIR__ . '/Hotel.php';
 
-define('FILE', 'hotel.xml');
 //define('FILE', 'hotel_small.xml');
+define('FILE', 'hotel.xml');
 
 $processes = !empty($argv[1]) && intval($argv[1]) > 0 ? intval($argv[1]) : 5;
 
 $hotel = new Hotel('Hotel', 'hotel_p.log');
 
 $count = ParserAbstract::count(FILE, 'Hotel');
-//$limit = $processes === 1 ? 1 : floor($count / $processes);
-
+$processes = $count > $processes ? $processes : $count;
 $limit = floor($count / $processes);
-$jobs = $limit > $processes ? $processes : $limit;
 
 echo "count: {$count}\n";
-echo "jobs: {$jobs}\n";
 echo "limit: {$limit}\n";
 echo "processes: {$processes}\n";
 
 echo '=======================================================================' . PHP_EOL;
 
-do_parallel_func($processes, ($jobs < $processes ? $processes : $jobs), function ($job, $proc_num) use ($jobs, $limit, $hotel, $processes, $count) {
+do_parallel_func($processes, $processes, function ($job, $proc_num) use ($limit, $hotel, $processes, $count) {
 
     $offset = $proc_num * $limit;
 
