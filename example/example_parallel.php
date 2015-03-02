@@ -3,30 +3,41 @@
 include __DIR__ . '/../ParserAbstract.php';
 include __DIR__ . '/Hotel.php';
 
+define('FILE', 'hotel.xml');
+//define('FILE', 'hotel_small.xml');
+
 $processes = !empty($argv[1]) && intval($argv[1]) > 0 ? intval($argv[1]) : 5;
 
 $hotel = new Hotel('Hotel', 'hotel_p.log');
 
-$count = ParserAbstract::count('hotel.xml', 'Hotel');
-$jobs = $processes === 1 ? 1 : floor($count / $processes);
+$count = ParserAbstract::count(FILE, 'Hotel');
+//$limit = $processes === 1 ? 1 : floor($count / $processes);
 
-echo "count {$count}\n";
-echo "jobs {$jobs}\n";
-echo "processes {$processes}\n";
+$limit = floor($count / $processes);
+$jobs = $limit > $processes ? $processes : $limit;
 
-do_parallel_func($processes, $jobs, function ($job, $proc_num) use ($jobs, $hotel, $processes, $count) {
+echo "count: {$count}\n";
+echo "jobs: {$jobs}\n";
+echo "limit: {$limit}\n";
+echo "processes: {$processes}\n";
+
+echo '=======================================================================' . PHP_EOL;
+
+do_parallel_func($processes, ($jobs < $processes ? $processes : $jobs), function ($job, $proc_num) use ($jobs, $limit, $hotel, $processes, $count) {
+
+    $offset = $proc_num * $limit;
+
     $msg = "process: {$proc_num}, job: {$job}";
-    if (($jobs - ($job + 1) == 0)) {
+    if (($processes - ($proc_num + 1) == 0)) {
         $msg .= ' last';
+        $limit = -1;
     }
-
-    $limit = ($jobs - ($job + 1) == 0) ? -1 : $jobs;
-    $offset = $jobs * $job;
 
     echo "{$msg}, load {$offset} {$limit}\n";
 
-    $hotel->load('hotel.xml', $offset, $limit);
+//    $hotel->load(FILE, $offset, $limit);
 });
+
 
 //=======================================================================
 /**
