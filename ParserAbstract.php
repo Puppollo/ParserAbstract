@@ -69,9 +69,20 @@ abstract class ParserAbstract
                 if ($reader->localName == $this->mainXMLBlock) {
                     $skip = false;
                     $object = [];
+                }
+                if (!$skip) {
                     if ($reader->hasAttributes) {
                         while ($reader->moveToNextAttribute()) {
-                            $object[$element]['attributes'][$reader->name] = $reader->value;
+                            if (isset($object[$element]['attributes'][$reader->name])) {
+                                if (is_array($object[$element]['attributes'][$reader->name])) {
+                                    $object[$element]['attributes'][$reader->name][] = $reader->value;
+                                } else {
+                                    $object[$element]['attributes'][$reader->name] = [$reader->value];
+                                }
+                            } else {
+                                $object[$element]['attributes'][$reader->name] = $reader->value;
+                            }
+
                         }
                     }
                 }
@@ -81,7 +92,6 @@ abstract class ParserAbstract
                 }
             } elseif ($reader->nodeType == XMLReader::END_ELEMENT) {
                 if ($reader->localName == $this->mainXMLBlock) {
-
                     $skip = true;
                     if ($currentBlock < $offset) {
                         $currentBlock++;
@@ -99,6 +109,8 @@ abstract class ParserAbstract
                             return $count;
                         }
                     }
+                } elseif (!$skip) {
+
                 }
             }
         }
