@@ -3,8 +3,10 @@
 /**
  * Class ParserAbstract
  * Provide a simple way for parsing big files
+ *
+ * https://github.com/Puppollo/ParserAbstract.git
  */
-abstract class ParserAbstract_
+abstract class ParserAbstract
 {
     private $mainXMLBlock; // xml entity to work with
 
