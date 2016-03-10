@@ -1,6 +1,10 @@
 <?php
 
-abstract class ParserAbstract
+/**
+ * Class ParserAbstract
+ * Provide a simple way for parsing big files
+ */
+abstract class ParserAbstract_
 {
     private $mainXMLBlock; // xml entity to work with
 
@@ -25,14 +29,20 @@ abstract class ParserAbstract
 
         $count = 0;
         while ($reader->read()) {
-            if ($reader->nodeType == XMLReader::END_ELEMENT) {
-                if ($reader->localName == $element) {
-                    $count++;
-                }
+            if ($reader->nodeType == XMLReader::END_ELEMENT && $reader->localName == $element) {
+                $count++;
             }
         }
         $reader->close();
         return $count;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBlock()
+    {
+        return $this->mainXMLBlock;
     }
 
     /**
@@ -57,60 +67,25 @@ abstract class ParserAbstract
             return false;
         }
 
-        $object = null;
-        $element = null;
         $count = 0;
         $currentBlock = 0;
-        $skip = false;
 
         while ($reader->read()) {
-            if ($reader->nodeType == XMLReader::ELEMENT) {
-                $element = $reader->localName;
-                if ($reader->localName == $this->mainXMLBlock) {
-                    $skip = false;
-                    $object = [];
+
+            if ($reader->nodeType == XMLReader::ELEMENT && $reader->localName == $this->mainXMLBlock) {
+
+                if ($currentBlock < $offset) {
+                    $currentBlock++;
+                    continue;
                 }
-                if (!$skip) {
-                    if ($reader->hasAttributes) {
-                        while ($reader->moveToNextAttribute()) {
-                            if (isset($object[$element]['attributes'][$reader->name])) {
-                                if (is_array($object[$element]['attributes'][$reader->name])) {
-                                    $object[$element]['attributes'][$reader->name][] = $reader->value;
-                                } else {
-                                    $object[$element]['attributes'][$reader->name] = [$reader->value];
-                                }
-                            } else {
-                                $object[$element]['attributes'][$reader->name] = $reader->value;
-                            }
 
-                        }
-                    }
-                }
-            } elseif ($reader->nodeType == XMLReader::TEXT || $reader->nodeType == XMLReader::CDATA || $reader->nodeType == XMLReader::WHITESPACE || $reader->nodeType == XMLReader::SIGNIFICANT_WHITESPACE) {
-                if (!$skip && !isset($object[$element]['value'])) {
-                    $object[$element]['value'] = $reader->value;
-                }
-            } elseif ($reader->nodeType == XMLReader::END_ELEMENT) {
-                if ($reader->localName == $this->mainXMLBlock) {
-                    $skip = true;
-                    if ($currentBlock < $offset) {
-                        $currentBlock++;
-                        continue;
-                    }
+                $this->element(simplexml_load_string($reader->readOuterXml()));
 
-                    $this->element($object);
+                $count++;
 
-                    $count++;
-                    $object = null;
-
-                    if ($amount > 0) {
-                        if ($count >= $amount) {
-                            $reader->close();
-                            return $count;
-                        }
-                    }
-                } elseif (!$skip) {
-
+                if ($amount > 0 && $count >= $amount) {
+                    $reader->close();
+                    return $count;
                 }
             }
         }
